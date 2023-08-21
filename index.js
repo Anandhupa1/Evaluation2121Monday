@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const { connection } = require("./configs/connection.js");
+const { userRouter } = require("./routes/user.route.js");
+const { loginRouter } = require("./routes/login.js");
+const { registerRouter } = require("./routes/register.js");
+const { appointmentRouter } = require("./routes/appointment.js");
 app.use(cors());
 app.use(express.json())
 
@@ -14,9 +18,10 @@ app.get("/",async(req,res)=>{
     }
 })
 
-
-
-
+app.use("/users",userRouter);
+app.use("/login",loginRouter);
+app.use("/register",registerRouter);
+app.use("/appointment",appointmentRouter);
 
 
 
